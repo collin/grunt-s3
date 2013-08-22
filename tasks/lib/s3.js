@@ -158,7 +158,7 @@ exports.init = function (grunt) {
             }
           });
         }
-        res.resume();
+        res && res.resume();
       });
     };
 
@@ -179,7 +179,7 @@ exports.init = function (grunt) {
         headers['Content-Type'] += '; charset=' + charset;
       }
 
-      var tmp = new Tempfile();
+      var tmp = new Tempfile(src);
       var input = fs.createReadStream(src);
       var output = fs.createWriteStream(tmp.path);
 
